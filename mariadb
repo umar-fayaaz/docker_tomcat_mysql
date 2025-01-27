@@ -1,0 +1,24 @@
+sudo yum update -y
+sudo yum install -y mariadb-server
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+sudo mysql_secure_installation
+sudo systemctl status mariadb
+
+---
+## to configure
+vi  /etc/my.cnf
+bind-address=0.0.0.0
+
+sudo systemctl restart mariadb
+
+---
+to give Grant access
+```bash
+mysql -u root -p
+```
+```bash
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '1234' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+```
+---
